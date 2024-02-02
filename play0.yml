@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Check the time
+      command: date
+    - name: create user theo
+      user:
+         name: theo2024
+         comment: Theo Admin
+    - name: create group
+      group:
+         name: security
+         state: present
+    - name: Install package
+      package:
+        name: vim
+        state: present
+~                                

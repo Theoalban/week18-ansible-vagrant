@@ -1,0 +1,29 @@
+
+sts: all
+  become: true
+  gather_facts: yes
+  vars:
+    user_name: theo2029
+    group_name: devops
+  vars_files:
+    - variables.yml
+
+  tasks:
+    - name: Check the time
+      command: date
+      when: ansible_distribution == "theo" or ansible_processor_cores == 2
+    - name: create user theo
+      user:
+         name: "{{user_name}}"
+         comment: Theo Admin
+    - name: create group
+      group:
+         name: "{{group_name}}"
+         state: present
+    - name: Install package
+      package:
+        name: "{{pkg_name}}"
+        state: present
+
+      register: yum_output
+

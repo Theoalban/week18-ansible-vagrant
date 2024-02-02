@@ -1,0 +1,19 @@
+---
+- name: Variables project
+  hosts: web
+  become: true
+  vars:
+   package: vim,yum-utils,wget,git
+  tasks:
+  - name: Install Package
+    yum: name={{ package }} state=latest
+
+#master_key: ee69d96880726d3abf6b42b97d2ae589111ea95c2a8bd5876ec5cd9e8ee34f86
+##join_key: 83da88eaaa08dfed5b86888fcec85f19ace0c3ff8747bcefcec2c9769ad4043d
+#
+#jfrog_url: >-
+#  "http://{{ hostvars[groups['artifactory_servers'][0]]['ansible_host'] }}:8082"
+#
+#  ## Products enabled
+#  artifactory_enabled: true
+#  ~                                     

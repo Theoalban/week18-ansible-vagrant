@@ -1,0 +1,35 @@
+---
+- hosts: web1
+  ignore_errors: True
+  become: True
+  tasks:
+    - name: Create a user
+      user:
+        name: mysuser
+        comment: Theo Kemajou
+
+    - name: Create a file on target host
+      file:
+        path: /tmp/ansiblefile
+        state: touch
+
+    - name: Create a directory
+      file:
+        path: /opt/directory_ansible
+        state: directory
+
+    - name: Debug distribution and version
+      debug:
+        var: ansible_distribution
+
+    - name: Install httpd
+      package:
+        name: "{{ 'httpd' if ansible_distribution == 'Amazon' else 'httpd' }}"
+        state: present
+      when: ansible_distribution in ['Amazon', 'Ubuntu', 'Debian', 'CentOS']
+
+    - name: Start the apache service
+      service:
+        name: "{{ 'httpd' if ansible_distribution == 'Amazon' else 'httpd' }}"
+        state: started
+      when: ansible_distribution in ['Amazon', 'Ubuntu', 'Debian', 'CentOS']

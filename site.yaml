@@ -1,0 +1,9 @@
+---
+- hosts: web1
+  become: true
+  gather_facts: true
+
+  roles:
+        - apache
+        - system
+        - java

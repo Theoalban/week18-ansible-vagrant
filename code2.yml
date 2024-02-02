@@ -1,0 +1,35 @@
+---
+- hosts: db
+  become: yes
+  ignore_errors: yes
+  gather_facts: 1
+  vars:
+    color: red
+  tasks:
+     - name: Check the number of cpu
+       command: nproc
+       register: nproc_output
+     - name: Display the output
+       debug:
+         var: nproc_output.stdout
+
+     - name: Create file
+       file:
+         path: /home/vagrant/week3
+         state: touch
+         mode: '0644'
+
+       register: file_output
+
+     - name: Display output
+       debug:
+         var: file_output
+
+     - name: Display output
+       debug:
+         var: file_output.diff.before.path
+
+     - name: Display color
+       debug:
+         var: color
+~                                  
