@@ -1,5 +1,5 @@
-
-sts: all
+---
+- hosts: all
   become: true
   gather_facts: yes
   vars:
@@ -11,7 +11,7 @@ sts: all
   tasks:
     - name: Check the time
       command: date
-      when: ansible_distribution == "theo" or ansible_processor_cores == 2
+      when: ansible_distribution == "CentOs" or ansible_processor_cores == 2
     - name: create user theo
       user:
          name: "{{user_name}}"
