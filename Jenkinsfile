@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'ARTIFACTORY_URL', defaultValue: 'http://3.86.56.150:8082/artifactory/ansible-code1', description: 'JFrog Artifactory URL')
+        string(name: 'ARTIFACTORY_URL', defaultValue: 'http://192.168.56.150:8082/artifactory/ansible-code1', description: 'JFrog Artifactory URL')
         string(name: 'ARTIFACTORY_CREDENTIALS', defaultValue: 'admin:cmVmdGtuOjAxOjE3Mzg0NzA5MzM6VHZQdUtGRWhpMm1MY1pKNzdoTjNHM1YyZEQ1', description: 'JFrog Artifactory Credentials')
     }
 
