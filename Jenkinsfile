@@ -21,7 +21,7 @@ pipeline {
         
         stage('Download Artifact from Jfrog') {
             agent {
-                label 'ansible1'
+                label 'ansible2'
             }
             steps {
                 script {
@@ -34,7 +34,7 @@ pipeline {
         
         stage('Run playbook') {
             agent {
-                label 'ansible1'
+                label 'ansible2'
             }
             steps {
                 script {
